@@ -36,6 +36,14 @@ const Todo = () => {
     });
   };
 
+  const updateTodo = (id, newText) => {
+    setTodoList((prevTodos) =>
+      prevTodos.map((todo) =>
+        todo.id === id ? {...todo, text: newText} : todo
+      )
+    );
+  };
+
   const toggle = (id) => {
     setTodoList((prevTodos) => {
       return prevTodos.map((todo) => {
@@ -92,6 +100,7 @@ const Todo = () => {
                 isComplete={item.isComplete}
                 deleteTodo={deleteTodo}
                 toggle={toggle}
+                updateTodo={updateTodo}
               />
             );
           })}
